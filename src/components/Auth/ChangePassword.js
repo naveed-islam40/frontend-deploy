@@ -1,7 +1,6 @@
 // src/ChangePassword.js
 
 import React, { useState } from 'react';
-import supabase from '../../supabaseClient';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios'
 import { toast } from 'react-toastify';
