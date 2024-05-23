@@ -27,6 +27,8 @@ const SignIn = () => {
             const endpoint = `${process.env.REACT_APP_BACKEND_URL}/api/v2/login`;
             const response = await axios.post(endpoint, data);
 
+            console.log(process.env.REACT_APP_BACKEND_URL);
+
             console.log(response);
             if (response.data && response.data.token) {
                 localStorage.setItem("token", response.data.token);
