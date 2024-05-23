@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import { Dialog, Menu, Transition } from '@headlessui/react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../authContext';
 import { useCompany } from '../../services/CompanyContext';
 import { useUser } from '../../services/UserContext';
@@ -19,6 +19,8 @@ import {
   InformationCircleIcon,
 } from '@heroicons/react/24/solid';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const navigation = [
   { name: 'Tableau de bord', href: '/dashboard', icon: HomeIcon, current: true },
@@ -45,9 +47,18 @@ function Sidebar2({ title, children }) {
   const { companyName, companyLogo } = useCompany();
   const { user } = useUser();
 
-  const handleSignOut = () => {
-    signOut();
-  };
+  const navigate = useNavigate()
+
+
+  const handleSignOut = async() => {
+    const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/v2/logout`)
+    console.log(response);
+    if(response){
+      localStorage.clear()
+      toast.success(response.data.message)
+      navigate("/signin")
+    }
+    };
 
   return (
     <>
