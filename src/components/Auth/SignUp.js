@@ -34,10 +34,9 @@ const SignUp = () => {
             // formData.append("confirmPassword", user.confirmPassword);
             // formData.append("phone", user.phone);
             // formData.append("image", user.image);
-            // ${process.env.REACT_APP_BACKEND_URL}
 
             const result = await axios.post(
-                `https://backend-deploy-iota.vercel.app/api/v2/register/step-one`,
+                `${process.env.REACT_APP_BACKEND_URL}/api/v2/register/step-one`,
                 user
             );
             console.log("result", result);
