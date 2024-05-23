@@ -21,7 +21,7 @@ const ImportEmployeesModal = ({ modalIsOpen, closeModal, companyId }) => {
     formData.append('file', selectedFile);
 
     try {
-      const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/upload-employees/${companyId}`, formData, {
+      const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/v2/companies/${companyId}/employees/upload`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
