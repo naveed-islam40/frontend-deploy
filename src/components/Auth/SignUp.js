@@ -39,7 +39,6 @@ const SignUp = () => {
                 `${process.env.REACT_APP_BACKEND_URL}/api/v2/register/step-one`,
                 user
             );
-            console.log("result", result);
 
             if (result) {
                 console.log("response signup", result.data);
